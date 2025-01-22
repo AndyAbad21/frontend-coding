@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="container__body" [ngClass]="{'expand': isFooterVisible, 'restore': !isFooterVisible}">
+        <div class="container__body__logo">
+            <header>
+                <h1>Bienvenido a CODING</h1>
+                <p>La solución inteligente para predecir y explicar defectos en software utilizando modelos avanzados de aprendizaje automático.</p>
+            </header>
+        </div>
+        <div class="container__body__describe">
+            <main>
+                <div class="container__body__describe__logo">
+                    <img src="assets/images/logo.png" class="logo" alt="Main logo">
+                </div>
+                <section class="container__body__describe__intro">
+                    <h2>¿Qué es Coding?</h2>
+                    <p>Coding es una plataforma diseñada para ayudarte a identificar, predecir y comprender los defectos en el software. 
+                    Nuestro modelo, basado en Random Forest, analiza tus datos para ofrecer predicciones precisas y explicaciones detalladas 
+                    sobre posibles fallos en tus desarrollos.</p>
+                </section>
+                <div class="container__body_describe__button">
+                    <button (click)="navigateTo('/predict')">Hacer prediccion                           </button>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div class="container__footer">
+        <div class="container__footer__content">
+            <section class="container__footer__features">
+                <img src="assets/images/rf2.png" class="logo" alt="Random logo">
+                <h2>Características principales</h2>
+                <ul>
+                    <li>Predicción de defectos en software utilizando un modelo entrenado de Random Forest.</li>
+                    <li>Generación de explicaciones detalladas sobre las predicciones, permitiendo comprender los factores clave de cada resultado.</li>
+                    <li>Interfaz amigable con formularios dinámicos para ingresar los datos de tu proyecto.</li>
+                    <li>Reportes interactivos y visualización gráfica de las predicciones.</li>
+                    <li>Optimización y retroalimentación basada en datos para mejorar la calidad del software.</li>
+                </ul>
+            </section>
+            <div class="container__footer__used">
+                <section class="container__footer__started">
+                    <img src="assets/images/IA.png" class="logo" alt="IA logo">
+                    <h2>¿Cómo empezar?</h2>
+                    <ol>
+                        <li>Llena el formulario con los datos de tu proyecto, como número de líneas de código, complejidad, historial de errores, entre otros.</li>
+                        <li>Envía los datos para que nuestro modelo realice las predicciones.</li>
+                        <li>Obtén un análisis detallado que incluye predicciones de defectos y explicaciones sobre las causas principales.</li>
+                        <li>Utiliza los reportes generados para ajustar y optimizar tu desarrollo.</li>
+                    </ol>
+                </section>
+                
+                <section class="container__footer__about">
+                    <h2>Sobre Coding</h2>
+                    <p>Esta plataforma ha sido creada para mejorar la calidad y eficiencia del desarrollo de software mediante el uso de 
+                    inteligencia artificial. Nuestro objetivo es ayudarte a prevenir errores críticos, ahorrar tiempo y garantizar la 
+                    entrega de productos de alta calidad. Coding es tu aliado en el proceso de desarrollo de software.</p>
+                    <img src="assets/images/logo.png" class="logo" alt="Main logo">
+                </section>
+            </div>
+        </div>
+        
+        <!-- <section class="container__footer__needed">
+            <h2>Datos necesarios para el análisis</h2>
+            <p>Para obtener predicciones precisas, necesitamos que proporciones los siguientes datos sobre tu proyecto:</p>
+            <ul>
+                <li>Cantidad de líneas de código.</li>
+                <li>Complejidad del código (indicadores de métricas como ciclomatismo).</li>
+                <li>Historial de errores previos.</li>
+                <li>Frecuencia de actualizaciones o cambios en el código.</li>
+                <li>Entorno de desarrollo (herramientas y lenguajes utilizados).</li>
+            </ul>
+            <p>(Entre más detallada sea la información proporcionada, más precisos serán los resultados
+                 generados por nuestro modelo.)</p>
+        </section> -->
+
+        <footer>
+            <p>Desarrollado por: Andy Abad y Erick Verdugo - Proyecto Coding</p>
+        </footer>
+    </div>
+</div>

@@ -1,0 +1,97 @@
+/* Barra de navegación */
+.navbar {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed; /* Fija la barra en la parte superior */
+    top: 0;
+    left: 0;
+    width: 100%; /* Ocupa todo el ancho */
+    background-color: #ffffff; /* Fondo blanco */
+    z-index: 1000; /* Asegura que esté encima */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Añade una sombra sutil */
+    padding: 10px 5px; /* Espaciado interno */
+}
+
+/* Logo */
+.logo {
+    margin-left: 20px;
+    width: 130px;
+    cursor: pointer;
+}
+
+/* Lista de navegación */
+.navbar ul {
+    margin-right: 70px;
+}
+
+/* Elementos de la lista */
+.navbar ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative; /* Necesario para la barra animada */
+}
+
+/* Estilo base de los enlaces */
+.navbar ul li a {
+    text-decoration: none;
+    font-family: "sans-serif";
+    font-size: 1.2rem;
+    cursor: pointer;
+    background: linear-gradient(90deg, #00a1f8, #dc01fa, #ff9216, #fe005c);
+    background-clip: text;
+    -webkit-background-clip: text; /* Compatibilidad con navegadores */
+    -webkit-text-fill-color: transparent; /* Hace el texto transparente */
+    color: transparent; /* Necesario para el gradiente */
+    transition: transform 0.3s ease; /* Transición suave */
+    background-size: 200%; /* Aumenta el tamaño del fondo para la animación */
+}
+
+/* Hover: aumenta ligeramente el tamaño del texto */
+.navbar ul li a:hover {
+    animation: gradientMove 2s linear infinite; /* Gradiente animado */
+    transform: scale(1.05); /* Efecto de zoom */
+}
+
+/* Definición de la animación del gradiente */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Barra animada debajo de los enlaces */
+.navbar ul li::before {
+    content: ""; /* Elemento visual */
+    height: 3px; /* Grosor de la barra */
+    width: 0%; /* Barra oculta inicialmente */
+    background: linear-gradient(90deg, #00a1f8, #dc01fa, #ff9216, #fe005c);
+    position: absolute;
+    left: 0;
+    bottom: -12px; /* Espaciado debajo del texto */
+    transition: width 0.4s ease-out; /* Animación suave */
+    border-radius: 2px; /* Bordes redondeados */
+}
+
+/* Hover: la barra crece desde 0% a 100% */
+.navbar ul li:hover::before {
+    width: 100%; /* Barra completa */
+}
+
+/* Enlace activo: mantiene la barra animada */
+.navbar ul li a.active::before {
+    content: ""; /* Elemento visual */
+    height: 3px; /* Grosor de la barra */
+    width: 100%; /* Barra completa */
+    background: linear-gradient(90deg, #00a1f8, #dc01fa, #ff9216, #fe005c);
+    position: absolute;
+    left: 0;
+    bottom: -12px; /* Espaciado debajo del texto */
+    border-radius: 2px; /* Bordes redondeados */
+}

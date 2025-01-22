@@ -1,0 +1,151 @@
+.container {
+    background-color: #f0f0f0;
+    margin-top: 80px;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container__form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem 2rem;
+    background-color: #f7f7f7e5;
+    width: min(500px, 90%);
+    border-radius: 10px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    box-shadow: 
+        5px 5px 20px #00a1f875,
+        -5px -5px 20px #dc01fa75;
+    animation: efecto-leds 3s infinite alternate;
+}
+
+.container__form h1 {
+    text-align: center;
+    font-size: 1.5vw;
+    margin-bottom: 30px;
+}
+
+.container__form__label {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.container__form__label__input {
+    width: auto;
+    border-radius: 10px;
+    border: 1px solid #d7d0d0;
+    padding: 10px 90px; /* Espacio a la derecha para el ícono */
+    color: #6b6b6b;
+    font-size: 1rem;
+    background-color: transparent;
+    z-index: 1;
+    text-align: center;
+}
+
+.container__form__label__info {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px; /* Ancho del círculo */
+    height: 20px; /* Altura del círculo */
+    border: 2px solid #6b6b6b; /* Color del borde del círculo */
+    border-radius: 50%; /* Hace que el borde sea un círculo */
+    font-size: 1rem; /* Tamaño del texto "i" */
+    color: #6b6b6b; /* Color del texto "i" */
+    cursor: pointer; /* Cambia el cursor al pasar sobre la "i" */
+    transition: 0.3s ease; /* Transición para hover */
+    left: 50%; /* Centra el tooltip horizontalmente */
+    transform: translateX(210px);
+}
+
+.container__form__label__info:hover {
+    border-color: #00a1f8; /* Cambia el color del borde al pasar el cursor */
+    color: #00a1f8; /* Cambia el color de la "i" al pasar el cursor */
+}
+
+.container__form__label__info::after {
+    content: attr(data-info); /* Usa el atributo data-info */
+    position: absolute;
+    bottom: -20px; /* Posiciona el texto debajo del ícono */
+    left: 50%; /* Centra el tooltip horizontalmente */
+    transform: translateX(5%);
+    white-space: nowrap;
+    background: #fff; /* Fondo del tooltip */
+    color: #000; /* Color del texto */
+    padding: 10px 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
+    font-size: 0.9rem;
+    z-index: 10;
+}
+
+.container__form__label__info:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+.container__form__label__text {
+    position: absolute;
+    left: 50%; /* Centra horizontalmente el label */
+    top: 50%; /* Centra verticalmente el label */
+    transform: translate(-50%, -50%); /* Asegura que el label esté en el centro del input */
+    background-color: #F7F7F7;
+    padding: 0 0.5rem;
+    color: #6b6b6b;
+    font-size: 1rem;
+    transition: 0.3s ease-in-out;
+    pointer-events: none; /* Evita interferencias con el clic en el input */
+    text-align: center;
+}
+
+.container__form__label__input:focus + .container__form__label__text,
+.container__form__label__input:not(:placeholder-shown) + .container__form__label__text {
+    top: -10px; /* Mueve el label hacia arriba */
+    left: 50%; /* Mantiene el label centrado horizontalmente */
+    transform: translateX(-50%) scale(0.8); /* Escala el label */
+    color: #6b6b6b;
+    z-index: 10;
+}
+
+.container__form__label__submit {
+    display: inline-block;
+    border-radius: 10px;
+    background-color: #6b6b6b;
+    padding: 1rem 2rem;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    margin-top: 1rem;
+    transition: 0.3s ease;
+    animation: efecto-leds 3s infinite alternate;
+}
+
+.container__form__label__submit:hover {
+    background-color: #00a1f8;
+    cursor: pointer;
+}
+
+@keyframes efecto-leds {
+    0% {
+        box-shadow: 0 0px 5px #00a1f875,
+            0 0 5px #dc01fa75;
+    }
+    100% {
+        box-shadow: 0 0px 5px #dc01fa75,
+            0 0 5px #00a1f875;
+    }
+}

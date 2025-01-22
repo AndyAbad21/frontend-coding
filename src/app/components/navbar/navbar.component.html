@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="navbar">
+    <div class="logo">
+      <img src="assets/images/logo.png" class="logo" alt="Main logo">
+    </div>
+  
+    <ul>
+      <li><a (click)="navigateTo('/home')" [class.active]="isActive('/home')">Inicio</a></li>
+      <li><a (click)="navigateTo('/predict')" [class.active]="isActive('/predict')">Predicción</a></li>
+      <li><a (click)="navigateTo('/explainp')" [class.active]="isActive('/explainp')">Explicación</a></li>
+      <li><a (click)="navigateTo('/about')" [class.active]="isActive('/about')">Acerca de</a></li>
+    </ul>
+  </div>
+</div>
