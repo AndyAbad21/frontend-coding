@@ -24,16 +24,27 @@ export class PredictComponent {
     // HALSTEAD_PROG_TIME: null,
     // HALSTEAD_LEVEL: null,
     // NUM_OPERATORS: null,
-    "CYCLOMATIC_COMPLEXITY": 5,
-    "BRANCH_COUNT": 2,
-    "DESIGN_COMPLEXITY": 3,
     "LOC_BLANK": 10,
-    "HALSTEAD_LENGTH": 50,
+    "BRANCH_COUNT": 2,
+    "LOC_CODE_AND_COMMENT": 15,
+    "LOC_COMMENTS": 8,
+    "CYCLOMATIC_COMPLEXITY": 5,
+    "DESIGN_COMPLEXITY": 3,
+    "ESSENTIAL_COMPLEXITY": 2,
+    "LOC_EXECUTABLE": 20,
     "HALSTEAD_CONTENT": 30,
-    "NUM_UNIQUE_OPERATORS": 8,
-    "HALSTEAD_PROG_TIME": 2.5,
+    "HALSTEAD_DIFFICULTY": 5.6,
+    "HALSTEAD_EFFORT": 1500,
+    "HALSTEAD_ERROR_EST": 0.5,
+    "HALSTEAD_LENGTH": 120,
     "HALSTEAD_LEVEL": 0.9,
-    "NUM_OPERATORS": 15
+    "HALSTEAD_PROG_TIME": 2.8,
+    "HALSTEAD_VOLUME": 500,
+    "NUM_OPERANDS": 50,
+    "NUM_OPERATORS": 30,
+    "NUM_UNIQUE_OPERANDS": 10,
+    "NUM_UNIQUE_OPERATORS": 8,
+    "LOC_TOTAL": 100
   };
 
   prediction: string | null = null;
@@ -44,7 +55,7 @@ export class PredictComponent {
     private http: HttpClient,
     private router: Router, // Para redirigir
     private sharedService: SharedService // Para compartir datos
-  ) {}
+  ) { }
 
   onSubmit() {
     this.http.post('http://127.0.0.1:8000/api/predict/', this.data)
@@ -61,11 +72,11 @@ export class PredictComponent {
         console.error('Error en la solicitud:', error);
       });
   }
-  
+
 
   get objectKeys() {
     console.log(Object.keys(this.data)); // Esto debería imprimir las claves en la consola
     return Object.keys(this.data); // Retorna las claves del objeto data
-}
+  }
 
 }

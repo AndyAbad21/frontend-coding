@@ -1,14 +1,19 @@
 <div class="container">
   <form (ngSubmit)="onSubmit()" class="container__form">
     <h1>Predicción de defectos de software</h1>
-    <div *ngFor="let key of objectKeys" class="container__form__label">
-      <div class="container__form__label__input-group">
-        <input class="container__form__label__input" type="number" [(ngModel)]="data[key]" [name]="key" id="{{ key }}"
-          required placeholder=" ">
-        <label [for]="key" class="container__form__label__text">{{ key }}</label>
+
+    <!-- Contenedor de 2 columnas -->
+    <div class="container__form__grid">
+      <div *ngFor="let key of objectKeys" class="container__form__label">
+        <div class="container__form__label__input-group">
+          <input class="container__form__label__input" type="number" [(ngModel)]="data[key]" [name]="key" id="{{ key }}"
+            required placeholder=" ">
+          <label [for]="key" class="container__form__label__text">{{ key }}</label>
+        </div>
+        <span class="container__form__label__info" [attr.data-info]="'Información sobre ' + key">i</span>
       </div>
-      <span class="container__form__label__info" [attr.data-info]="'Información sobre ' + key">i</span>
     </div>
+
     <button class="container__form__label__submit" type="submit">Predicción</button>
   </form>
 </div>
