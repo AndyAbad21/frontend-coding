@@ -37,6 +37,8 @@ export class PredictComponent {
     "LOC_TOTAL": 100
   };
 
+  loading: boolean = false;  // Estado para mostrar el cartel de carga
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -44,20 +46,22 @@ export class PredictComponent {
   ) { }
 
   onSubmit() {
+    this.loading = true; // Activamos el cartel de carga
+
     this.http.post('http://127.0.0.1:8000/api/predict/', this.data)
       .subscribe((response: any) => {
-        // Guardamos los datos en el servicio compartido
         this.sharedService.setPredictionData({
           prediction: response.prediction,
           image: response.image,
           explicaciones: response.explicaciones,
-          explicacion_chatgpt: response.explicacion_chatgpt // Guardamos la explicación generada por ChatGPT
+          explicacion_chatgpt: response.explicacion_chatgpt
         });
 
-        // Redirigir al componente de explicación
-        this.router.navigate(['/explainp']);
+        this.loading = false; // Desactivamos el cartel de carga
+        this.router.navigate(['/explainp']); // Redirigimos al otro componente
       }, error => {
         console.error('Error en la solicitud:', error);
+        this.loading = false; // Aseguramos que se oculte el cartel si hay error
       });
   }
 
