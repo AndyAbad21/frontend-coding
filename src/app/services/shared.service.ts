@@ -7,7 +7,7 @@ export class SharedService {
 
   constructor() { }
 
-  private predictionData: any = null; // Almacén temporal de datos
+  private predictionData: any = null;
 
   setPredictionData(data: any) {
     this.predictionData = data;

@@ -1,35 +1,57 @@
 <div class="container">
-  <h1>Explicación de la Predicción</h1>
-
-  <!-- Resultados -->
-  <div *ngIf="prediction !== null && image !== null" class="results">
-    <h3>Predicción:</h3>
-    <div [class]="getPredictionClass()">
-      <span>{{ prediction }}</span>
-    </div>
+  <!-- Historial de Predicciones -->
+  <div class="historial">
+    <h3>Historial de Predicciones</h3>
+    <ul>
+      <li *ngFor="let item of historialPredicciones" class="historial-list">
+        <div class="historial-item" (click)="verPrediccion(item.id)">
+          <span>{{ item.fecha }} {{ item.prediccion }}</span>
+        </div>
+        <div class="historial-button">
+          <button (click)="eliminarPrediccion(item.id); $event.stopPropagation()">Eliminar</button>
+        </div>
+      </li>
+    </ul>
   </div>
 
-  <div *ngIf="explicaciones && explicaciones.length > 0" class="table">
-    <h4>Impacto de las Características en la Predicción:</h4>
-    <img [src]="image" alt="Gráfico de SHAP" width="100%">
-    <h4 id="hfinal">Explicacion detallada de la Predicción:</h4>
-    <table>
-      <thead>
-        <tr>
-          <th>Característica</th>
-          <th>Valor</th>
-          <th>Impacto</th>
-          <th>Interpretación</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let exp of explicaciones">
-          <td>{{ exp.caracteristica }}</td>
-          <td>{{ exp.valor }}</td>
-          <td>{{ exp.impacto | number: '1.2-2' }}</td>
-          <td>{{ exp.interpretacion }}</td>
-        </tr>
-      </tbody>
-    </table>
+  <!-- Sección de Explicación de la Predicción -->
+  <div class="prediccion-container">
+    <h1>Explicación de la Predicción</h1>
+
+    <div *ngIf="prediction !== null && image !== null" class="results">
+      <h3>Predicción:</h3>
+      <div [class]="getPredictionClass()">
+        <span>{{ prediction }}</span>
+      </div>
+    </div>
+
+    <div *ngIf="explicaciones && explicaciones.length > 0" class="table">
+      <h4>Impacto de las Características en la Predicción:</h4>
+      <img [src]="image" alt="Gráfico de SHAP" width="100%" class="shap-image">
+      <h4 id="hfinal">Explicación detallada de la Predicción:</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Característica</th>
+            <th>Valor</th>
+            <th>Impacto</th>
+            <th>Interpretación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let exp of explicaciones">
+            <td>{{ exp.caracteristica }}</td>
+            <td>{{ exp.valor }}</td>
+            <td>{{ exp.impacto | number: '1.2-2' }}</td>
+            <td>{{ exp.interpretacion }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="explicacionChatGPT" class="chatgpt-explanation">
+      <h3>Explicación Generada por ChatGPT:</h3>
+      <p>{{ explicacionChatGPT }}</p>
+    </div>
   </div>
 </div>
